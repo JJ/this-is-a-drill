@@ -2,7 +2,9 @@
 
 let stored = null
 
-const digits = [...Array(10).keys()].map((key) => key.toString())
+const numberOfDigits = 10
+
+const digits = [...Array(numberOfDigits)].map((_, i) =>  i.toString())
 
 const operations = {
   '+': (first, second) => first + second,
