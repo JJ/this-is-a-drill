@@ -1,4 +1,8 @@
 {
+    "scripts" : {
+        "lint": "npx eslint public/js/index.js"
+    },
+
   "devDependencies": {
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
