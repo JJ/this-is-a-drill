@@ -1,9 +1,9 @@
 {
-    "scripts" : {
-        "lint": "npx eslint public/js/index.js"
-    },
-
+  "scripts": {
+    "lint": "npx eslint public/js/index.js"
+  },
   "devDependencies": {
+    "cypress": "^6.8.0",
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
