@@ -1,0 +1,7 @@
+#display {
+    height: 1em;
+    margin-bottom: 4px;
+    padding: 4px;
+    border: 1px solid black;
+    overflow: hidden;
+}
