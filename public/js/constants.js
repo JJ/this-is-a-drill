@@ -20,21 +20,6 @@ const elements = {
   get clearButton () {
     return document.getElementById(`${BUTTON_PREFIX}-clear`)
   },
-  operationButtons: (() => {
-    const buttons = {}
-    for (const opCode of Object.keys(operations)) {
-      Object.defineProperty(buttons, opCode, {
-        enumerable: true,
-        get: () => document.getElementById({
-          '+': `${BUTTON_PREFIX}-add`,
-          '-': `${BUTTON_PREFIX}-subtract`,
-          '*': `${BUTTON_PREFIX}-multiply`,
-          '/': `${BUTTON_PREFIX}-divide`
-        }[opCode])
-      })
-    }
-    return buttons
-  })(),
   get calculateButton () {
     return document.getElementById(`${BUTTON_PREFIX}-calculate`)
   }
