@@ -48,3 +48,5 @@ const elements = {
     return document.getElementById('btn-calculate')
   }
 }
+
+export {operations, elements}
