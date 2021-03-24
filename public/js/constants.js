@@ -50,4 +50,4 @@ const elements = {
   }
 }
 
-export {operations, elements, digits}
+export {BUTTON_PREFIX, operations, elements, digits}

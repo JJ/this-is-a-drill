@@ -1,9 +1,11 @@
-import { digits, elements, operations } from '../../public/js/constants.js'
+import { BUTTON_PREFIX, digits, elements, operations } from '../../public/js/constants.js'
 
 describe('The page exists', () => {
   it('Check out the calculator', () => {
     cy.visit('public/index.html')
-    cy.contains('0')
+    for (const digit of digits) {
+        cy.get(`#${BUTTON_PREFIX}-${digit}`).contains(digit)
+    }
   })
 })
 
