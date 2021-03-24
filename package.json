@@ -1,7 +1,7 @@
 {
   "license": "Artistic-2.0",
   "scripts": {
-    "lint": "npx eslint public/js/index.js",
+    "lint": "npx eslint public/js/*.js",
     "tests:integration": "npx cypress run"
   },
   "devDependencies": {

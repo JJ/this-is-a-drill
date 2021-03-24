@@ -1,13 +1,13 @@
 const numberOfDigits = 10
-const BUTTON_PREFIX = "btn"
+const BUTTON_PREFIX = 'btn'
 
 const digits = [...Array(numberOfDigits)].map((_, i) => i.toString())
 
 const operations = {
-  '+': ["add",(first, second) => first + second],
-  '-': ["subtract", (first, second) => first - second],
-  '*': ["multiply", (first, second) => first * second],
-  '/': ["divide", (first, second) => first / second ]
+  '+': ['add', (first, second) => first + second],
+  '-': ['subtract', (first, second) => first - second],
+  '*': ['multiply', (first, second) => first * second],
+  '/': ['divide', (first, second) => first / second]
 }
 
 const elements = {
@@ -25,4 +25,4 @@ const elements = {
   }
 }
 
-export {BUTTON_PREFIX, operations, elements, digits}
+export { BUTTON_PREFIX, operations, elements, digits }
