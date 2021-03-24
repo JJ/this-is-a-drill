@@ -9,3 +9,5 @@ jobs:
       run: yarn
     - name: Check code
       run: npm run lint
+    - name: Integration tests
+      run: npm run tests:integration
