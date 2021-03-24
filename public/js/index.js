@@ -4,8 +4,7 @@ import { BUTTON_PREFIX, digits, elements, operations } from './constants.js'
 
 let stored = null
 
-function setUpEntryButtons () {
-  const buttonDiv = document.getElementById('buttons');
+function setUpEntryButtons ( targetDiv ) {
   for (const digit of digits) {
     const button = document.createElement('button');
     button.setAttribute('id', `${BUTTON_PREFIX}-${digit}`)
@@ -13,7 +12,7 @@ function setUpEntryButtons () {
     button.addEventListener('click', function () {
       elements.display.textContent += digit
     })
-    buttonDiv.appendChild( button )
+    targetDiv.appendChild( button )
   }
 
   elements.separatorButton.addEventListener('click', function () {
@@ -54,7 +53,8 @@ function setUpCalculateButton () {
 }
 
 (() => {
-  setUpEntryButtons()
+  const buttonDiv = document.getElementById('buttons');
+  setUpEntryButtons( buttonDiv )
   setUpOperationButtons()
   setUpCalculateButton()
 })()
