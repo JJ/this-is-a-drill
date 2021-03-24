@@ -4,10 +4,10 @@ const BUTTON_PREFIX = "btn"
 const digits = [...Array(numberOfDigits)].map((_, i) => i.toString())
 
 const operations = {
-  '+': (first, second) => first + second,
-  '-': (first, second) => first - second,
-  '*': (first, second) => first * second,
-  '/': (first, second) => first / second
+  '+': ["add",(first, second) => first + second],
+  '-': ["subtract", (first, second) => first - second],
+  '*': ["multiply", (first, second) => first * second],
+  '/': ["divide", (first, second) => first / second ]
 }
 
 const elements = {

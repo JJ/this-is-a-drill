@@ -32,8 +32,11 @@ function calculate () {
   return operations[stored.opCode](first, second)
 }
 
-function setUpOperationButtons () {
-  for (const [opCode, button] of Object.entries(elements.operationButtons)) {
+function setUpOperationButtons ( targetDiv ) {
+  for (const opCode of Object.keys(operations)) {
+    const button = document.createElement('button');
+    button.setAttribute('id', `${BUTTON_PREFIX}-${opCode[0]}`)
+    button.appendChild(document.createTextNode( opCode ));
     button.addEventListener('click', function () {
       stored = {
         text: stored ? calculate() : elements.display.textContent,
@@ -41,6 +44,7 @@ function setUpOperationButtons () {
       }
       elements.display.textContent = ''
     })
+    targetDiv.appendChild( button )
   }
 }
 
@@ -55,6 +59,6 @@ function setUpCalculateButton () {
 (() => {
   const buttonDiv = document.getElementById('buttons');
   setUpEntryButtons( buttonDiv )
-  setUpOperationButtons()
+  setUpOperationButtons( buttonDiv )
   setUpCalculateButton()
 })()
