@@ -1,7 +1,8 @@
 'use strict'
 
-let stored = null
+import { elements, operations } from './constants.js'
 
+let stored = null
 
 function setUpEntryButtons () {
   for (const [digit, button] of Object.entries(elements.digitButtons)) {
