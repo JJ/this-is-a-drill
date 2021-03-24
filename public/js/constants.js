@@ -14,16 +14,6 @@ const elements = {
   get display () {
     return document.getElementById('display')
   },
-  digitButtons: (() => {
-    const buttons = {}
-    for (const digit of digits) {
-      Object.defineProperty(buttons, digit, {
-        enumerable: true,
-        get: () => document.getElementById(`${BUTTON_PREFIX}-${digit}`)
-      })
-    }
-    return buttons
-  })(),
   get separatorButton () {
     return document.getElementById(`${BUTTON_PREFIX}-separator`)
   },

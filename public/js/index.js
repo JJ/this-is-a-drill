@@ -1,14 +1,19 @@
 'use strict'
 
-import { elements, operations } from './constants.js'
+import { BUTTON_PREFIX, digits, elements, operations } from './constants.js'
 
 let stored = null
 
 function setUpEntryButtons () {
-  for (const [digit, button] of Object.entries(elements.digitButtons)) {
+  const buttonDiv = document.getElementById('buttons');
+  for (const digit of digits) {
+    const button = document.createElement('button');
+    button.setAttribute('id', `${BUTTON_PREFIX}-${digit}`)
+    button.appendChild(document.createTextNode( digit ));
     button.addEventListener('click', function () {
       elements.display.textContent += digit
     })
+    buttonDiv.appendChild( button )
   }
 
   elements.separatorButton.addEventListener('click', function () {
