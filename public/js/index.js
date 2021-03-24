@@ -4,15 +4,15 @@ import { BUTTON_PREFIX, digits, elements, operations } from './constants.js'
 
 let stored = null
 
-function setUpEntryButtons ( targetDiv ) {
+function setUpEntryButtons (targetDiv) {
   for (const digit of digits) {
-    const button = document.createElement('button');
+    const button = document.createElement('button')
     button.setAttribute('id', `${BUTTON_PREFIX}-${digit}`)
-    button.appendChild(document.createTextNode( digit ));
+    button.appendChild(document.createTextNode(digit))
     button.addEventListener('click', function () {
       elements.display.textContent += digit
     })
-    targetDiv.appendChild( button )
+    targetDiv.appendChild(button)
   }
 
   elements.separatorButton.addEventListener('click', function () {
@@ -29,22 +29,24 @@ function setUpEntryButtons ( targetDiv ) {
 function calculate () {
   const [first, second] = [stored.text, elements.display.textContent]
     .map((text) => parseFloat(text))
-  return operations[stored.opCode](first, second)
+  console.log(stored)
+  return stored.opCode(first, second)
 }
 
-function setUpOperationButtons ( targetDiv ) {
+function setUpOperationButtons (targetDiv) {
   for (const opCode of Object.keys(operations)) {
-    const button = document.createElement('button');
-    button.setAttribute('id', `${BUTTON_PREFIX}-${opCode[0]}`)
-    button.appendChild(document.createTextNode( opCode ));
+    console.log(operations[opCode])
+    const button = document.createElement('button')
+    button.setAttribute('id', `${BUTTON_PREFIX}-${operations[opCode][0]}`)
+    button.appendChild(document.createTextNode(opCode))
     button.addEventListener('click', function () {
       stored = {
         text: stored ? calculate() : elements.display.textContent,
-        opCode
+        opCode: operations[opCode][1]
       }
       elements.display.textContent = ''
     })
-    targetDiv.appendChild( button )
+    targetDiv.appendChild(button)
   }
 }
 
@@ -57,8 +59,8 @@ function setUpCalculateButton () {
 }
 
 (() => {
-  const buttonDiv = document.getElementById('buttons');
-  setUpEntryButtons( buttonDiv )
-  setUpOperationButtons( buttonDiv )
+  const buttonDiv = document.getElementById('buttons')
+  setUpEntryButtons(buttonDiv)
+  setUpOperationButtons(buttonDiv)
   setUpCalculateButton()
 })()
