@@ -35,7 +35,6 @@ function calculate () {
 
 function setUpOperationButtons (targetDiv) {
   for (const opCode of Object.keys(operations)) {
-    console.log(operations[opCode])
     const button = document.createElement('button')
     button.setAttribute('id', `${BUTTON_PREFIX}-${operations[opCode][0]}`)
     button.appendChild(document.createTextNode(opCode))
