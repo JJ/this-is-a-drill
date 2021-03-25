@@ -1,4 +1,4 @@
-import { BUTTON_PREFIX, digits, elements, operations } from '../../public/js/constants.js'
+import { digits, elements, operations } from '../../public/js/constants.js'
 
 const allDigits = digits.join("")
 const allDigitsRe = new RegExp("^"+allDigits+"$")
@@ -12,13 +12,13 @@ describe('The page exists and buttons can be clicked', () => {
 
   it('Check out the calculator', () => {
     for (const digit of digits) {
-        cy.get(`#${BUTTON_PREFIX}-${digit}`).contains(digit)
+        cy.get(elements.btnName(digit)).contains(digit)
     }
   })
 
   it('Can click on numbers and they show on screen', () => {
     for (const digit of digits) {
-        cy.get(`#${BUTTON_PREFIX}-${digit}`).click()
+        cy.get(elements.btnName(digit)).click()
     }
     cy.get("#display").contains(allDigitsRe)
     cy.get(elements.btnName('clear')).click()
