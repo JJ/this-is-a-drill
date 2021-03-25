@@ -26,6 +26,7 @@ function setUpEntryButtons (targetDiv) {
     })
     targetDiv.appendChild(button)
   }
+  elements.numberButton("0").style.width = "2em"
 }
 
 function setUpOperationButtons (targetDiv) {
@@ -69,6 +70,7 @@ function setUpAuxiliaryButtons (targetDiv) {
     elements.display.textContent = ''
     stored = null
   })
+  button.style.width="3em"
   targetDiv.appendChild(button)
 
   button = setUpAButton('=')
