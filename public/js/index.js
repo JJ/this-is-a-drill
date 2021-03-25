@@ -7,7 +7,8 @@ let stored = null
 function setUpAButton (text) {
   const button = document.createElement('button')
   button.setAttribute('id', elements.btnId(text))
-  button.appendChild(document.createTextNode(text))
+  button.style.fontSize = "36px" 
+  button.appendChild( document.createTextNode(text))
   return button
 }
 
