@@ -4,26 +4,22 @@ import { digits, elements, operations } from './constants.js'
 
 let stored = null
 
+function setUpAButton( text ) {
+  const button = document.createElement('button')
+  button.setAttribute('id', elements.btnId(text))
+  button.appendChild(document.createTextNode(text))
+  return button
+}
+
 function setUpEntryButtons (targetDiv) {
   for (const digit of digits) {
-    const button = document.createElement('button')
-    button.setAttribute('id', elements.btnId(digit))
-    button.appendChild(document.createTextNode(digit))
+    const button = setUpAButton( digit )
     button.addEventListener('click', function () {
       elements.display.textContent += digit
     })
     targetDiv.appendChild(button)
   }
-  console.log(elements)
-  elements.separatorButton.addEventListener('click', function () {
-    const text = elements.display.textContent
-    if (text.length && text.indexOf('.') === -1) { elements.display.textContent += '.' }
-  })
 
-  elements.clearButton.addEventListener('click', function () {
-    elements.display.textContent = ''
-    stored = null
-  })
 }
 
 function calculate () {
@@ -35,9 +31,7 @@ function calculate () {
 
 function setUpOperationButtons (targetDiv) {
   for (const opCode of Object.keys(operations)) {
-    const button = document.createElement('button')
-    button.setAttribute('id', elements.btnId(opCode))
-    button.appendChild(document.createTextNode(opCode))
+    const button = setUpAButton(opCode)
     button.addEventListener('click', function () {
       stored = {
         text: stored ? calculate() : elements.display.textContent,
@@ -49,12 +43,29 @@ function setUpOperationButtons (targetDiv) {
   }
 }
 
-function setUpCalculateButton () {
-  elements.calculateButton.addEventListener('click', function () {
+function setUpAuxiliaryButtons ( targetDiv ) {
+  let button = setUpAButton( "." )
+  button.addEventListener('click', function () {
+    const text = elements.display.textContent
+    if (text.length && text.indexOf('.') === -1) { elements.display.textContent += '.' }
+  })
+  targetDiv.appendChild(button)
+
+  button = setUpAButton( "C")
+  button.addEventListener('click', function () {
+    elements.display.textContent = ''
+    stored = null
+  })
+  targetDiv.appendChild(button)
+
+  button = setUpAButton( "=" )
+  button.addEventListener('click', function () {
     if (!stored) { return }
     elements.display.textContent = calculate()
     stored = null
   })
+  targetDiv.appendChild(button)
+
 }
 
 function setUpKeyBindings () {
@@ -78,6 +89,6 @@ function setUpKeyBindings () {
   const buttonDiv = document.getElementById('buttons')
   setUpEntryButtons(buttonDiv)
   setUpOperationButtons(buttonDiv)
-  setUpCalculateButton()
+  setUpAuxiliaryButtons(buttonDiv)
   setUpKeyBindings()
 })()

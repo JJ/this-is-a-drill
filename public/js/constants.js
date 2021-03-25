@@ -57,7 +57,7 @@ const elements = {
     if (this.isOpcode(arg)) {
       return `${BUTTON_PREFIX}-${operations[arg][0]}`
     }
-    if (this.isAuxiliary(arg)) {
+    if (this.isAux(arg)) {
       return `${BUTTON_PREFIX}-${auxiliary[arg]}`
     }
     throw new Error('That opcode does not exist')
