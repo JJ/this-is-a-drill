@@ -1,13 +1,13 @@
 'use strict'
 
-import { BUTTON_PREFIX, digits, elements, operations, auxiliary } from './constants.js'
+import { digits, elements, operations, auxiliary } from './constants.js'
 
 let stored = null
 
 function setUpEntryButtons (targetDiv) {
   for (const digit of digits) {
     const button = document.createElement('button')
-    button.setAttribute('id', `${BUTTON_PREFIX}-${digit}`)
+    button.setAttribute('id', elements.btnId(digit))
     button.appendChild(document.createTextNode(digit))
     button.addEventListener('click', function () {
       elements.display.textContent += digit
@@ -36,7 +36,7 @@ function calculate () {
 function setUpOperationButtons (targetDiv) {
   for (const opCode of Object.keys(operations)) {
     const button = document.createElement('button')
-    button.setAttribute('id', `${BUTTON_PREFIX}-${operations[opCode][0]}`)
+    button.setAttribute('id', elements.btnId( opCode ))
     button.appendChild(document.createTextNode(opCode))
     button.addEventListener('click', function () {
       stored = {

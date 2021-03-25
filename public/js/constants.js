@@ -37,6 +37,17 @@ const elements = {
       throw new Error(`auxiliary operation ${op} does not exist`)
     }
   },
+  btnId: function( arg ) {
+    if ( digits.indexOf( arg ) > -1 ) {
+      return `${BUTTON_PREFIX}-${arg}`
+    }
+    if ( Object.keys(operations).indexOf( arg ) > -1 ) {
+      return `${BUTTON_PREFIX}-${operations[arg][0]}`
+    }
+    if (Object.keys(auxiliary).indexOf(arg) > -1) {
+      return `${BUTTON_PREFIX}-${auxiliary[arg]}`
+    }
+  },
   btnName: function (arg) { return `#${BUTTON_PREFIX}-${arg}` }
 }
 
@@ -48,4 +59,4 @@ for (const i of Object.keys(auxiliary)) {
 }
 
 console.log(elements)
-export { BUTTON_PREFIX, operations, elements, digits, auxiliary }
+export { operations, elements, digits, auxiliary }
