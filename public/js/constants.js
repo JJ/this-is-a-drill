@@ -20,13 +20,13 @@ const elements = {
   get display () {
     return document.getElementById('display')
   },
-  isDigit: function( digit ) {
-    return digits.indexOf( digit ) > -1
+  isDigit: function (digit) {
+    return digits.indexOf(digit) > -1
   },
-  isOpcode: function( op ) {
-    return Object.keys(operations).indexOf( op ) > -1 
+  isOpcode: function (op) {
+    return Object.keys(operations).indexOf(op) > -1
   },
-  isAux: function(op) {
+  isAux: function (op) {
     return Object.keys(auxiliary).indexOf(op) > -1
   },
   numberButton: function (number) {
@@ -46,17 +46,17 @@ const elements = {
       throw new Error(`auxiliary operation ${op} does not exist`)
     }
   },
-  btnId: function( arg ) {
-    if ( this.isDigit(arg) ) {
+  btnId: function (arg) {
+    if (this.isDigit(arg)) {
       return `${BUTTON_PREFIX}-${arg}`
     }
-    if ( this.isOpcode(arg) ) {
+    if (this.isOpcode(arg)) {
       return `${BUTTON_PREFIX}-${operations[arg][0]}`
     }
-    if ( this.isAuxiliary(arg )) {
+    if (this.isAuxiliary(arg)) {
       return `${BUTTON_PREFIX}-${auxiliary[arg]}`
     }
-    throw new Error( "That opcode does not exist")
+    throw new Error('That opcode does not exist')
   },
   btnName: function (arg) { return `#${BUTTON_PREFIX}-${arg}` }
 }
