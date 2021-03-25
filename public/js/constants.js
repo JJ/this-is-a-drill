@@ -27,7 +27,7 @@ const elements = {
     return Object.keys(operations).indexOf( op ) > -1 
   },
   isAux: function(op) {
-    return Object.keys(auxiliary).indexOf(arg) > -1
+    return Object.keys(auxiliary).indexOf(op) > -1
   },
   numberButton: function (number) {
     return document.getElementById(`${BUTTON_PREFIX}-${number}`)
