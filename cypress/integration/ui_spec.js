@@ -1,4 +1,4 @@
-import { digits, elements, operations } from '../../public/js/constants.js'
+import { digits, elements, operations, auxiliary } from '../../public/js/constants.js'
 
 const allDigits = digits.join("")
 const allDigitsRe = new RegExp("^"+allDigits+"$")
@@ -52,9 +52,13 @@ describe('The page exists and buttons can be clicked', () => {
   })
 
   it('Performs key-bound operations', () => {
-    const ops = "33*33"
+    let ops = "33*33"
     keyStream( ops )
     cy.get(elements.btnName('calculate')).click()
+    cy.get("#display").contains( eval ( ops ))
+    cy.get(elements.btnName('clear')).click()
+    ops = "33/33"
+    keyStream( ops + "=")
     cy.get("#display").contains( eval ( ops ))
   })
 

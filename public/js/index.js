@@ -1,6 +1,6 @@
 'use strict'
 
-import { BUTTON_PREFIX, digits, elements, operations } from './constants.js'
+import { BUTTON_PREFIX, digits, elements, operations, auxiliary } from './constants.js'
 
 let stored = null
 
@@ -66,6 +66,10 @@ function setUpKeyBindings () {
 
     if (Object.keys(operations).indexOf(event.key) > -1) {
       elements.opButton(event.key).click()
+    }
+
+    if (Object.keys(auxiliary).indexOf(event.key) > -1) {
+      elements.auxButton(event.key).click()
     }
   })
 }

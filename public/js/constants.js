@@ -48,4 +48,4 @@ for (const i of Object.keys(auxiliary)) {
 }
 
 console.log(elements)
-export { BUTTON_PREFIX, operations, elements, digits }
+export { BUTTON_PREFIX, operations, elements, digits, auxiliary }
