@@ -57,9 +57,19 @@ function setUpCalculateButton () {
   })
 }
 
+function setUpKeyBindings() {
+  document.addEventListener( 'keydown', event => {
+    console.log( event )
+    if ( event.key >= digits[0] && event.key <= digits[digits.length -1 ] ) {
+      elements.numberButton( event.key ).click()
+    }
+  })
+}
+
 (() => {
   const buttonDiv = document.getElementById('buttons')
   setUpEntryButtons(buttonDiv)
   setUpOperationButtons(buttonDiv)
   setUpCalculateButton()
+  setUpKeyBindings()
 })()

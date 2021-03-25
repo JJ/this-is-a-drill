@@ -40,6 +40,13 @@ describe('The page exists and buttons can be clicked', () => {
       cy.get("#display").contains( eval ( NUMBER.toString() + opCode + NUMBER.toString() ))
     }
   })
+
+  it('Works with keybindings', () => {
+    for (const digit of digits) {
+      cy.get('body').trigger("keydown", { key: digit });
+    }
+    cy.get("#display").contains(/^0123456789$/)
+  })
 })
 
 function btnName( arg ) {

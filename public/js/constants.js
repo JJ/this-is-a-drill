@@ -14,6 +14,10 @@ const elements = {
   get display () {
     return document.getElementById('display')
   },
+  numberButton: function ( number ) {
+    console.log(number)
+    return document.getElementById(`${BUTTON_PREFIX}-${number}`)
+  },
   get separatorButton () {
     return document.getElementById(`${BUTTON_PREFIX}-separator`)
   },
