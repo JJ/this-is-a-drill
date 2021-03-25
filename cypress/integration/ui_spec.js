@@ -4,7 +4,7 @@ describe('The page exists and buttons can be clicked', () => {
 
   beforeEach(() => {
      cy.visit('public/index.html')
-     cy.get("#btn-clear").click
+     cy.get("#btn-clear").click()
   })
 
   it('Check out the calculator', () => {
@@ -18,8 +18,8 @@ describe('The page exists and buttons can be clicked', () => {
         cy.get(`#${BUTTON_PREFIX}-${digit}`).click()
     }
     cy.get("#display").contains("0123456789")
-    cy.get("#btn-clear").click
-    cy.get("#display").should('be.empty')
+    cy.get("#btn-clear").click()
+    cy.get("#display").contains(/^$/)
   })
 })
 
