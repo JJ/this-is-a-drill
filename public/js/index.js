@@ -14,7 +14,7 @@ function setUpEntryButtons (targetDiv) {
     })
     targetDiv.appendChild(button)
   }
-
+  console.log(elements)
   elements.separatorButton.addEventListener('click', function () {
     const text = elements.display.textContent
     if (text.length && text.indexOf('.') === -1) { elements.display.textContent += '.' }

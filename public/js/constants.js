@@ -38,15 +38,14 @@ const elements = {
     }
   },
   btnName: function( arg ) {return `#${BUTTON_PREFIX}-${arg}`}, 
-  get separatorButton () {
-    return this.auxButton('.')
-  },
-  get clearButton () {
-    return this.auxButton("C")
-  },
-  get calculateButton () {
-    return this.auxButton("=")
-  }
 }
 
+for ( const i of Object.keys(auxiliary) ) {
+  Object.defineProperty(elements,
+    `${auxiliary[i]}Button`,
+    { get: () => { return elements.auxButton(i) } }
+  )
+}
+
+console.log(elements)
 export { BUTTON_PREFIX, operations, elements, digits }
