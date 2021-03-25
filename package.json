@@ -2,7 +2,8 @@
   "license": "Artistic-2.0",
   "scripts": {
     "lint": "npx eslint public/js/*.js",
-    "tests:integration": "npx cypress run"
+    "tests:integration": "npx cypress run",
+    "web:start": "npx webpack serve"
   },
   "devDependencies": {
     "cypress": "^6.8.0",

@@ -18,6 +18,8 @@ describe('The page exists and buttons can be clicked', () => {
         cy.get(`#${BUTTON_PREFIX}-${digit}`).click()
     }
     cy.get("#display").contains("0123456789")
+    cy.get("#btn-clear").click
+    cy.get("#display").should('be.empty')
   })
 })
 
