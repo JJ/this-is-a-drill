@@ -30,17 +30,21 @@ const elements = {
     return Object.keys(auxiliary).indexOf(op) > -1
   },
   numberButton: function (number) {
-    return document.getElementById(`${BUTTON_PREFIX}-${number}`)
+    if ( this.isDigit(number)) {
+      return document.getElementById(`${BUTTON_PREFIX}-${number}`)
+    } else {
+      throw new Error(`${op} is not a digit`)
+    }
   },
   opButton: function (op) {
-    if (Object.keys(operations).indexOf(op) > -1) {
+    if ( this.isOpcode(op) ) {
       return document.getElementById(`${BUTTON_PREFIX}-${operations[op][0]}`)
     } else {
       throw new Error(`operator ${op} does not exist`)
     }
   },
   auxButton: function (op) {
-    if (Object.keys(auxiliary).indexOf(op) > -1) {
+    if ( this.isAux(op)) {
       return document.getElementById(`${BUTTON_PREFIX}-${auxiliary[op]}`)
     } else {
       throw new Error(`auxiliary operation ${op} does not exist`)
