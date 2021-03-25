@@ -62,6 +62,13 @@ describe('The page exists and buttons can be clicked', () => {
     cy.get("#display").contains( eval ( ops ))
   })
 
+  it('Works with - up front', () => {
+    let ops = "-33*-33"
+    keyStream( ops )
+    cy.get(elements.btnName('calculate')).click()
+    cy.get("#display").contains( eval ( ops ))
+  })
+
 })
 
 function clickStream( arg ) {

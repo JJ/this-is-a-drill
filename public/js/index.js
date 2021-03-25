@@ -32,13 +32,27 @@ function calculate () {
 function setUpOperationButtons (targetDiv) {
   for (const opCode of Object.keys(operations)) {
     const button = setUpAButton(opCode)
-    button.addEventListener('click', function () {
-      stored = {
-        text: stored ? calculate() : elements.display.textContent,
-        opCode: operations[opCode][1]
-      }
-      elements.display.textContent = ''
-    })
+    if ( opCode == '-' ) {
+      button.addEventListener('click', function () {
+        if ( elements.display.textContent == '' ) {
+          elements.display.textContent += '-'
+        } else {
+          stored = {
+            text: stored ? calculate() : elements.display.textContent,
+            opCode: operations[opCode][1]
+          }
+          elements.display.textContent = ''
+        }
+      })
+    } else {
+      button.addEventListener('click', function () {
+        stored = {
+          text: stored ? calculate() : elements.display.textContent,
+          opCode: operations[opCode][1]
+        }
+        elements.display.textContent = ''
+      })
+    }
     targetDiv.appendChild(button)
   }
 }
