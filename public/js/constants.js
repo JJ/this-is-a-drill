@@ -25,6 +25,7 @@ const elements = {
       throw `operator ${op} does not exist`
     }
   },
+  btnName: function( arg ) {return `#${BUTTON_PREFIX}-${arg}`}, 
   get separatorButton () {
     return document.getElementById(`${BUTTON_PREFIX}-separator`)
   },

@@ -21,15 +21,15 @@ describe('The page exists and buttons can be clicked', () => {
         cy.get(`#${BUTTON_PREFIX}-${digit}`).click()
     }
     cy.get("#display").contains(allDigitsRe)
-    cy.get(btnName('clear')).click()
+    cy.get(elements.btnName('clear')).click()
     cy.get("#display").contains(/^$/)
   })
 
   it('Avoids double separators', () => {
-    cy.get(btnName(1)).click()
-    cy.get(btnName('separator')).click()
-    cy.get(btnName(1)).click()
-    cy.get(btnName('separator')).click()
+    cy.get(elements.btnName(1)).click()
+    cy.get(elements.btnName('separator')).click()
+    cy.get(elements.btnName(1)).click()
+    cy.get(elements.btnName('separator')).click()
     cy.get("#display").contains(/^1\.1$/)
   })
 
@@ -37,9 +37,9 @@ describe('The page exists and buttons can be clicked', () => {
     const NUMBER = 42
     for (const opCode of Object.keys(operations)) {
       clickStream(NUMBER)
-      cy.get(btnName(operations[opCode][0])).click()
+      cy.get(elements.btnName(operations[opCode][0])).click()
       clickStream(NUMBER)
-      cy.get(btnName('calculate')).click()
+      cy.get(elements.btnName('calculate')).click()
       cy.get("#display").contains( eval ( NUMBER.toString() + opCode + NUMBER.toString() ))
     }
   })
@@ -54,20 +54,16 @@ describe('The page exists and buttons can be clicked', () => {
   it('Performs key-bound operations', () => {
     const ops = "33*33"
     keyStream( ops )
-    cy.get(btnName('calculate')).click()
+    cy.get(elements.btnName('calculate')).click()
     cy.get("#display").contains( eval ( ops ))
   })
 
 })
 
-function btnName( arg ) {
-    return `#${BUTTON_PREFIX}-${arg}`
-}
-
 function clickStream( arg ) {
   let str = typeof arg == 'string' ? arg : arg.toString()
   for ( let c of str[Symbol.iterator]() ) {
-    cy.get( btnName( c ) ).click()
+    cy.get( elements.btnName( c ) ).click()
   }
 }
 
