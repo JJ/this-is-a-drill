@@ -10,6 +10,12 @@ const operations = {
   '/': ['divide', (first, second) => first / second]
 }
 
+const auxiliary = {
+  'C': 'clear',
+  '.': 'separator',
+  '=': 'calculate'
+}
+
 const elements = {
   get display () {
     return document.getElementById('display')
@@ -18,22 +24,28 @@ const elements = {
     return document.getElementById(`${BUTTON_PREFIX}-${number}`)
   },
   opButton: function ( op ) {
-    console.log(op)
     if ( Object.keys(operations).indexOf(op) > -1 ) {
       return document.getElementById(`${BUTTON_PREFIX}-${operations[op][0]}`)
     } else {
       throw `operator ${op} does not exist`
     }
   },
+  auxButton: function ( op ) {
+    if ( Object.keys(auxiliary).indexOf(op) > -1 ) {
+      return document.getElementById(`${BUTTON_PREFIX}-${auxiliary[op]}`)
+    } else {
+      throw `auxiliary operation ${op} does not exist`
+    }
+  },
   btnName: function( arg ) {return `#${BUTTON_PREFIX}-${arg}`}, 
   get separatorButton () {
-    return document.getElementById(`${BUTTON_PREFIX}-separator`)
+    return this.auxButton('.')
   },
   get clearButton () {
-    return document.getElementById(`${BUTTON_PREFIX}-clear`)
+    return this.auxButton("C")
   },
   get calculateButton () {
-    return document.getElementById(`${BUTTON_PREFIX}-calculate`)
+    return this.auxButton("=")
   }
 }
 
