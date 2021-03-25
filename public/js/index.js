@@ -63,6 +63,10 @@ function setUpKeyBindings() {
     if ( event.key >= digits[0] && event.key <= digits[digits.length -1 ] ) {
       elements.numberButton( event.key ).click()
     }
+
+    if ( Object.keys(operations).indexOf(event.key) > -1 ) {
+      elements.opButton( event.key ).click()
+    }
   })
 }
 

@@ -50,6 +50,14 @@ describe('The page exists and buttons can be clicked', () => {
     }
     cy.get("#display").contains(allDigitsRe)
   })
+
+  it('Performs key-bound operations', () => {
+    const ops = "33*33"
+    keyStream( ops )
+    cy.get(btnName('calculate')).click()
+    cy.get("#display").contains( eval ( ops ))
+  })
+
 })
 
 function btnName( arg ) {
@@ -60,5 +68,12 @@ function clickStream( arg ) {
   let str = typeof arg == 'string' ? arg : arg.toString()
   for ( let c of str[Symbol.iterator]() ) {
     cy.get( btnName( c ) ).click()
+  }
+}
+
+function keyStream( arg ) {
+  let str = typeof arg == 'string' ? arg : arg.toString()
+  for ( let c of str[Symbol.iterator]() ) {
+    cy.get('body').trigger( "keydown", { key: c })
   }
 }

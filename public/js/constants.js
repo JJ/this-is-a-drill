@@ -15,8 +15,15 @@ const elements = {
     return document.getElementById('display')
   },
   numberButton: function ( number ) {
-    console.log(number)
     return document.getElementById(`${BUTTON_PREFIX}-${number}`)
+  },
+  opButton: function ( op ) {
+    console.log(op)
+    if ( Object.keys(operations).indexOf(op) > -1 ) {
+      return document.getElementById(`${BUTTON_PREFIX}-${operations[op][0]}`)
+    } else {
+      throw `operator ${op} does not exist`
+    }
   },
   get separatorButton () {
     return document.getElementById(`${BUTTON_PREFIX}-separator`)
