@@ -60,15 +60,15 @@ function setUpCalculateButton () {
 function setUpKeyBindings () {
   document.addEventListener('keydown', event => {
     console.log(event)
-    if (event.key >= digits[0] && event.key <= digits[digits.length - 1]) {
+    if ( elements.isDigit(event.key )) {
       elements.numberButton(event.key).click()
     }
 
-    if (Object.keys(operations).indexOf(event.key) > -1) {
+    if ( elements.isOpcode(event.key)) {
       elements.opButton(event.key).click()
     }
 
-    if (Object.keys(auxiliary).indexOf(event.key) > -1) {
+    if ( elements.isAux(event.key)) {
       elements.auxButton(event.key).click()
     }
   })
