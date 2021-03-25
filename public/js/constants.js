@@ -65,12 +65,5 @@ const elements = {
   btnName: function (arg) { return `#${BUTTON_PREFIX}-${arg}` }
 }
 
-for (const i of Object.keys(auxiliary)) {
-  Object.defineProperty(elements,
-    `${auxiliary[i]}Button`,
-    { get: () => { return elements.auxButton(i) } }
-  )
-}
-
 console.log(elements)
 export { operations, elements, digits, auxiliary }
