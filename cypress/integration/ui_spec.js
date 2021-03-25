@@ -1,5 +1,8 @@
 import { BUTTON_PREFIX, digits, elements, operations } from '../../public/js/constants.js'
 
+const allDigits = digits.join("")
+const allDigitsRe = new RegExp("^"+allDigits+"$")
+
 describe('The page exists and buttons can be clicked', () => {
 
   beforeEach(() => {
@@ -17,7 +20,7 @@ describe('The page exists and buttons can be clicked', () => {
     for (const digit of digits) {
         cy.get(`#${BUTTON_PREFIX}-${digit}`).click()
     }
-    cy.get("#display").contains("0123456789")
+    cy.get("#display").contains(allDigitsRe)
     cy.get(btnName('clear')).click()
     cy.get("#display").contains(/^$/)
   })
@@ -45,7 +48,7 @@ describe('The page exists and buttons can be clicked', () => {
     for (const digit of digits) {
       cy.get('body').trigger("keydown", { key: digit });
     }
-    cy.get("#display").contains(/^0123456789$/)
+    cy.get("#display").contains(allDigitsRe)
   })
 })
 
