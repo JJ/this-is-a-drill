@@ -21,5 +21,13 @@ describe('The page exists and buttons can be clicked', () => {
     cy.get("#btn-clear").click()
     cy.get("#display").contains(/^$/)
   })
+
+  it('Avoids double separators', () => {
+    cy.get("#btn-1").click()
+    cy.get("#btn-separator").click()
+    cy.get("#btn-1").click()
+    cy.get("#btn-separator").click()
+    cy.get("#display").contains(/^1\.1$/)
+  })
 })
 
