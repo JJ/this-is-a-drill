@@ -11,7 +11,7 @@ const operations = {
 }
 
 const auxiliary = {
-  'C': 'clear',
+  C: 'clear',
   '.': 'separator',
   '=': 'calculate'
 }
@@ -20,27 +20,27 @@ const elements = {
   get display () {
     return document.getElementById('display')
   },
-  numberButton: function ( number ) {
+  numberButton: function (number) {
     return document.getElementById(`${BUTTON_PREFIX}-${number}`)
   },
-  opButton: function ( op ) {
-    if ( Object.keys(operations).indexOf(op) > -1 ) {
+  opButton: function (op) {
+    if (Object.keys(operations).indexOf(op) > -1) {
       return document.getElementById(`${BUTTON_PREFIX}-${operations[op][0]}`)
     } else {
-      throw `operator ${op} does not exist`
+      throw new Error(`operator ${op} does not exist`)
     }
   },
-  auxButton: function ( op ) {
-    if ( Object.keys(auxiliary).indexOf(op) > -1 ) {
+  auxButton: function (op) {
+    if (Object.keys(auxiliary).indexOf(op) > -1) {
       return document.getElementById(`${BUTTON_PREFIX}-${auxiliary[op]}`)
     } else {
-      throw `auxiliary operation ${op} does not exist`
+      throw new Error(`auxiliary operation ${op} does not exist`)
     }
   },
-  btnName: function( arg ) {return `#${BUTTON_PREFIX}-${arg}`}, 
+  btnName: function (arg) { return `#${BUTTON_PREFIX}-${arg}` }
 }
 
-for ( const i of Object.keys(auxiliary) ) {
+for (const i of Object.keys(auxiliary)) {
   Object.defineProperty(elements,
     `${auxiliary[i]}Button`,
     { get: () => { return elements.auxButton(i) } }
