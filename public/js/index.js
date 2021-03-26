@@ -7,14 +7,14 @@ let stored = null
 function setUpAButton (text) {
   const button = document.createElement('button')
   button.setAttribute('id', elements.btnId(text))
-  button.style.fontSize = "36px" 
-  button.appendChild( document.createTextNode(text))
-  if ( text.match(/\d/) ) {
-    button.style.backgroundColor="bisque"
-  } else if ( text.match(/[\+\-\*\/]/) ) {
-    button.style.backgroundColor="lightblue"
+  button.style.fontSize = '36px'
+  button.appendChild(document.createTextNode(text))
+  if (text.match(/\d/)) {
+    button.style.backgroundColor = 'bisque'
+  } else if (text.match(/[+\-*/]/)) {
+    button.style.backgroundColor = 'lightblue'
   } else {
-    button.style.backgroundColor="lightpink"
+    button.style.backgroundColor = 'lightpink'
   }
   return button
 }
@@ -30,20 +30,20 @@ function setUpEntryButtons () {
   const targetDiv = document.getElementById('digits')
   for (const digit of digits) {
     const button = setUpAButton(digit)
-    button.style.width = "33%"
+    button.style.width = '33%'
     button.addEventListener('click', function () {
       elements.display.textContent += digit
     })
     targetDiv.appendChild(button)
   }
-  elements.numberButton("0").style.width = "66%"
+  elements.numberButton('0').style.width = '66%'
 }
 
 function setUpOperationButtons () {
   const targetDiv = document.getElementById('ops')
   for (const opCode of Object.keys(operations)) {
     const button = setUpAButton(opCode)
-    button.style.width = "100%"
+    button.style.width = '100%'
     if (opCode === '-') {
       button.addEventListener('click', function () {
         if (elements.display.textContent === '') {
@@ -75,7 +75,7 @@ function setUpAuxiliaryButtons () {
     const text = elements.display.textContent
     if (text.length && text.indexOf('.') === -1) { elements.display.textContent += '.' }
   })
-  button.style.width = "33%"
+  button.style.width = '33%'
   document.getElementById('digits').appendChild(button)
 
   button = setUpAButton('C')
@@ -83,7 +83,7 @@ function setUpAuxiliaryButtons () {
     elements.display.textContent = ''
     stored = null
   })
-  button.style.width="100%"
+  button.style.width = '100%'
   document.getElementById('C').appendChild(button)
 
   button = setUpAButton('=')
@@ -92,7 +92,7 @@ function setUpAuxiliaryButtons () {
     elements.display.textContent = calculate()
     stored = null
   })
-  button.style.width="100%"
+  button.style.width = '100%'
   document.getElementById('ops').appendChild(button)
 }
 
