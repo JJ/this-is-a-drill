@@ -1,7 +1,13 @@
 #display {
+    font-size: 36px;
     height: 1em;
-    margin-bottom: 4px;
-    padding: 4px;
+    margin-bottom: 5px;
+    padding: 5px;
     border: 1px solid black;
     overflow: hidden;
+}
+
+button {
+    padding: 10px;
+    border-radius: 6px;
 }
