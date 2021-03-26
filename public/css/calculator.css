@@ -11,3 +11,22 @@ button {
     padding: 10px;
     border-radius: 6px;
 }
+
+#buttons {
+    display: grid;
+}
+
+#C {
+    grid-column-end: span 3;
+    grid-row-end: span 1;
+}
+
+#digits {
+    grid-column-end: span 3;
+    grid-column-end: span 4;
+}
+
+#ops {
+    grid-column-end: span 1;
+    grid-column-end: span 5;
+}

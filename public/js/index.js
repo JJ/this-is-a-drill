@@ -26,7 +26,8 @@ function calculate () {
   return stored.opCode(first, second)
 }
 
-function setUpEntryButtons (targetDiv) {
+function setUpEntryButtons () {
+  const targetDiv = document.getElementById('digits')
   for (const digit of digits) {
     const button = setUpAButton(digit)
     button.addEventListener('click', function () {
@@ -37,7 +38,8 @@ function setUpEntryButtons (targetDiv) {
   elements.numberButton("0").style.width = "2em"
 }
 
-function setUpOperationButtons (targetDiv) {
+function setUpOperationButtons () {
+  const targetDiv = document.getElementById('ops')
   for (const opCode of Object.keys(operations)) {
     const button = setUpAButton(opCode)
     if (opCode === '-') {
@@ -65,21 +67,21 @@ function setUpOperationButtons (targetDiv) {
   }
 }
 
-function setUpAuxiliaryButtons (targetDiv) {
+function setUpAuxiliaryButtons () {
   let button = setUpAButton('.')
   button.addEventListener('click', function () {
     const text = elements.display.textContent
     if (text.length && text.indexOf('.') === -1) { elements.display.textContent += '.' }
   })
-  targetDiv.appendChild(button)
+  document.getElementById('digits').appendChild(button)
 
   button = setUpAButton('C')
   button.addEventListener('click', function () {
     elements.display.textContent = ''
     stored = null
   })
-  button.style.width="3em"
-  targetDiv.appendChild(button)
+  button.style.width="100%"
+  document.getElementById('C').appendChild(button)
 
   button = setUpAButton('=')
   button.addEventListener('click', function () {
@@ -87,7 +89,7 @@ function setUpAuxiliaryButtons (targetDiv) {
     elements.display.textContent = calculate()
     stored = null
   })
-  targetDiv.appendChild(button)
+  document.getElementById('ops').appendChild(button)
 }
 
 function setUpKeyBindings () {
@@ -108,9 +110,8 @@ function setUpKeyBindings () {
 }
 
 (() => {
-  const buttonDiv = document.getElementById('buttons')
-  setUpEntryButtons(buttonDiv)
-  setUpOperationButtons(buttonDiv)
-  setUpAuxiliaryButtons(buttonDiv)
+  setUpEntryButtons()
+  setUpOperationButtons()
+  setUpAuxiliaryButtons()
   setUpKeyBindings()
 })()
