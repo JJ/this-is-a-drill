@@ -9,6 +9,13 @@ function setUpAButton (text) {
   button.setAttribute('id', elements.btnId(text))
   button.style.fontSize = "36px" 
   button.appendChild( document.createTextNode(text))
+  if ( text.match(/\d/) ) {
+    button.style.backgroundColor="bisque"
+  } else if ( text.match(/[\+\-\*\/]/) ) {
+    button.style.backgroundColor="lightblue"
+  } else {
+    button.style.backgroundColor="lightpink"
+  }
   return button
 }
 
