@@ -1,4 +1,4 @@
-import { digits, elements, operations, auxiliary } from '../../public/js/constants.js'
+import { digits, elements, operations, auxiliary } from '../../docs/js/constants.js'
 
 const allDigits = digits.join("")
 const allDigitsRe = new RegExp("^"+allDigits+"$")
@@ -6,7 +6,7 @@ const allDigitsRe = new RegExp("^"+allDigits+"$")
 describe('The page exists and buttons can be clicked', () => {
 
   beforeEach(() => {
-     cy.visit('public/index.html')
+     cy.visit('docs/index.html')
      cy.get("#btn-clear").click()
   })
 
